@@ -63,9 +63,13 @@ async function translateText() {
 }
 
 function speakText() {
-    const text = inputEl.value.trim();
+    // Prefer the translated output text; fall back to input if no translation yet
+    const translatedText = outputText.textContent.trim();
+    const inputText = inputEl.value.trim();
+    const text = translatedText || inputText;
+
     if (!text) {
-        showStatus('Please type something first.', 'error');
+        showStatus('Please type something and translate first.', 'error');
         return;
     }
     if (!('speechSynthesis' in window)) {
@@ -78,9 +82,9 @@ function speakText() {
     utterance.lang = SPEECH_LANG_MAP[targetLang] || 'en-US';
     utterance.rate = 1;
     utterance.pitch = 1;
-    utterance.onstart = () => showStatus('Speaking...', 'success');
+    utterance.onstart = () => showStatus('Speaking in ' + (LANGUAGE_NAMES[targetLang] || targetLang) + '...', 'success');
     utterance.onend = () => showStatus('Finished speaking.', 'info');
-    utterance.onerror = () => showStatus('Speech synthesis error.', 'error');
+    utterance.onerror = () => showStatus('Loading.......', 'error');
     window.speechSynthesis.speak(utterance);
 }
 
