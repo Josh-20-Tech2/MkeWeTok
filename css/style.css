@@ -1,0 +1,147 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #667eea;
+}
+
+body {
+    background: var(--primary-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 2rem;
+}
+
+.app-card {
+    background: rgba(255,255,255,0.95);
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+}
+
+.card-header-custom {
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-header-custom h2 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.form-control, .form-select {
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e5e9;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+    outline: none;
+}
+
+.textarea-input {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.btn-speak {
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 12px;
+    padding: 0.875rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(102,126,234,0.3);
+}
+
+.btn-speak:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(102,126,234,0.4);
+    color: #fff;
+}
+
+.btn-speak:active {
+    transform: translateY(0);
+}
+
+.btn-speak:disabled {
+    opacity: 0.65;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.btn-outline-primary {
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+.output-box {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 80px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.output-box.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 576px) {
+    .container-fluid { padding-left: 1rem; padding-right: 1rem; }
+    .app-card { border-radius: 20px; }
+    .btn-speak { font-size: 1rem; padding: 0.75rem; }
+}
+
+.loading-spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
